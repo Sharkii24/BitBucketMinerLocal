@@ -22,6 +22,7 @@ public class Reporter {
     @JsonProperty("nickname")
     private String nickname;
 
+
     @JsonProperty("display_name")
     public String getDisplayName() {
         return displayName;
