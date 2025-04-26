@@ -5,21 +5,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class IssueLinks {
+public class CommitLinks {
 
     @JsonProperty("self")
-    private Link self;   // Hace falta (web_url Issue)
+    private Link self;   // Hace falta (web_url Commit)
+
     /*
     @JsonProperty("html")
     private Html__1 html;
+    @JsonProperty("diff")
+    private Diff diff;
+    @JsonProperty("approve")
+    private Approve approve;
     @JsonProperty("comments")
     private Comments comments;
-    @JsonProperty("attachments")
-    private Attachments attachments;
-    @JsonProperty("watch")
-    private Watch watch;
-    @JsonProperty("vote")
-    private Vote vote;
+    @JsonProperty("statuses")
+    private Statuses statuses;
+    @JsonProperty("patch")
+    private Patch patch;
+
      */
 
     @JsonProperty("self")
@@ -43,6 +47,26 @@ public class IssueLinks {
         this.html = html;
     }
 
+    @JsonProperty("diff")
+    public Diff getDiff() {
+        return diff;
+    }
+
+    @JsonProperty("diff")
+    public void setDiff(Diff diff) {
+        this.diff = diff;
+    }
+
+    @JsonProperty("approve")
+    public Approve getApprove() {
+        return approve;
+    }
+
+    @JsonProperty("approve")
+    public void setApprove(Approve approve) {
+        this.approve = approve;
+    }
+
     @JsonProperty("comments")
     public Comments getComments() {
         return comments;
@@ -53,41 +77,31 @@ public class IssueLinks {
         this.comments = comments;
     }
 
-    @JsonProperty("attachments")
-    public Attachments getAttachments() {
-        return attachments;
+    @JsonProperty("statuses")
+    public Statuses getStatuses() {
+        return statuses;
     }
 
-    @JsonProperty("attachments")
-    public void setAttachments(Attachments attachments) {
-        this.attachments = attachments;
+    @JsonProperty("statuses")
+    public void setStatuses(Statuses statuses) {
+        this.statuses = statuses;
     }
 
-    @JsonProperty("watch")
-    public Watch getWatch() {
-        return watch;
+    @JsonProperty("patch")
+    public Patch getPatch() {
+        return patch;
     }
 
-    @JsonProperty("watch")
-    public void setWatch(Watch watch) {
-        this.watch = watch;
-    }
-
-    @JsonProperty("vote")
-    public Vote getVote() {
-        return vote;
-    }
-
-    @JsonProperty("vote")
-    public void setVote(Vote vote) {
-        this.vote = vote;
+    @JsonProperty("patch")
+    public void setPatch(Patch patch) {
+        this.patch = patch;
     }
      */
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(IssueLinks.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(CommitLinks.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("self");
         sb.append('=');
         sb.append(((this.self == null)?"<null>":this.self));
@@ -97,23 +111,27 @@ public class IssueLinks {
         sb.append('=');
         sb.append(((this.html == null)?"<null>":this.html));
         sb.append(',');
+        sb.append("diff");
+        sb.append('=');
+        sb.append(((this.diff == null)?"<null>":this.diff));
+        sb.append(',');
+        sb.append("approve");
+        sb.append('=');
+        sb.append(((this.approve == null)?"<null>":this.approve));
+        sb.append(',');
         sb.append("comments");
         sb.append('=');
         sb.append(((this.comments == null)?"<null>":this.comments));
         sb.append(',');
-        sb.append("attachments");
+        sb.append("statuses");
         sb.append('=');
-        sb.append(((this.attachments == null)?"<null>":this.attachments));
+        sb.append(((this.statuses == null)?"<null>":this.statuses));
         sb.append(',');
-        sb.append("watch");
+        sb.append("patch");
         sb.append('=');
-        sb.append(((this.watch == null)?"<null>":this.watch));
+        sb.append(((this.patch == null)?"<null>":this.patch));
         sb.append(',');
-        sb.append("vote");
-        sb.append('=');
-        sb.append(((this.vote == null)?"<null>":this.vote));
-        sb.append(',');
-         */
+        */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

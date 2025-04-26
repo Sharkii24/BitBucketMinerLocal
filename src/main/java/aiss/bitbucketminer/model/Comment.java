@@ -6,10 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Issue {
+public class Comment {
 
     @JsonProperty("values")
-    private List<IssueValue> values;    // Hace falta
+    private List<CommentValue> values; // Hace falta
+
     /*
     @JsonProperty("pagelen")
     private Integer pagelen;
@@ -17,21 +18,20 @@ public class Issue {
     private Integer size;
     @JsonProperty("page")
     private Integer page;
-    @JsonProperty("next")
-    private String next;
+
      */
 
     @JsonProperty("values")
-    public List<IssueValue> getValues() {
+    public List<CommentValue> getValues() {
         return values;
     }
 
+    /*
     @JsonProperty("values")
-    public void setValues(List<IssueValue> values) {
+    public void setValues(List<Value> values) {
         this.values = values;
     }
 
-    /*
     @JsonProperty("pagelen")
     public Integer getPagelen() {
         return pagelen;
@@ -62,22 +62,12 @@ public class Issue {
         this.page = page;
     }
 
-    @JsonProperty("next")
-    public String getNext() {
-        return next;
-    }
-
-    @JsonProperty("next")
-    public void setNext(String next) {
-        this.next = next;
-    }
-
      */
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Issue.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Comment.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("values");
         sb.append('=');
         sb.append(((this.values == null)?"<null>":this.values));
@@ -94,10 +84,6 @@ public class Issue {
         sb.append("page");
         sb.append('=');
         sb.append(((this.page == null)?"<null>":this.page));
-        sb.append(',');
-        sb.append("next");
-        sb.append('=');
-        sb.append(((this.next == null)?"<null>":this.next));
         sb.append(',');
 
          */

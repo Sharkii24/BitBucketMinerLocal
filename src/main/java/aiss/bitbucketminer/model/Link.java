@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Links {
+public class Link {
 
     @JsonProperty("href")
     private String href;    // Hace falta (web_url Assignee)
@@ -23,7 +23,7 @@ public class Links {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Links.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Link.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("href");
         sb.append('=');
         sb.append(((this.href == null)?"<null>":this.href));

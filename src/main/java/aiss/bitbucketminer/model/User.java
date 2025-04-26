@@ -5,12 +5,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Assignee {
+public class User {
 
     @JsonProperty("display_name")
     private String displayName; // Hace falta (name User)
     @JsonProperty("links")
-    private AssigneeLinks links;    // Hace falta (web_url Assignee)
+    private UserLinks links;    // Hace falta (web_url Assignee)
     @JsonProperty("uuid")
     private String uuid;    // Hace falta (id User)?
     @JsonProperty("account_id")
@@ -35,12 +35,12 @@ public class Assignee {
     }
 
     @JsonProperty("links")
-    public AssigneeLinks getLinks() {
+    public UserLinks getLinks() {
         return links;
     }
 
     @JsonProperty("links")
-    public void setLinks(AssigneeLinks links) {
+    public void setLinks(UserLinks links) {
         this.links = links;
     }
 
@@ -88,7 +88,7 @@ public class Assignee {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Assignee.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(User.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("displayName");
         sb.append('=');
         sb.append(((this.displayName == null)?"<null>":this.displayName));

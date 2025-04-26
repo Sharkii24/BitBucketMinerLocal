@@ -12,9 +12,9 @@ public class IssueValue {
     @JsonProperty("title")
     private String title;   // Hace falta (title Issue)
     @JsonProperty("reporter")
-    private Reporter reporter;   // Hace falta (author Issue)
+    private User reporter;   // Hace falta (author Issue)
     @JsonProperty("assignee")
-    private Assignee assignee;    // Hace falta
+    private User assignee;    // Hace falta
     @JsonProperty("created_on")
     private String createdOn;   // Hace falta (createdAt Issue)
     @JsonProperty("updated_on")
@@ -71,22 +71,22 @@ public class IssueValue {
     }
 
     @JsonProperty("reporter")
-    public Reporter getReporter() {
+    public User getReporter() {
         return reporter;
     }
 
     @JsonProperty("reporter")
-    public void setReporter(Reporter reporter) {
+    public void setReporter(User reporter) {
         this.reporter = reporter;
     }
 
     @JsonProperty("assignee")
-    public Assignee getAssignee() {
+    public User getAssignee() {
         return assignee;
     }
 
     @JsonProperty("assignee")
-    public void setAssignee(Assignee assignee) {
+    public void setAssignee(User assignee) {
         this.assignee = assignee;
     }
 
