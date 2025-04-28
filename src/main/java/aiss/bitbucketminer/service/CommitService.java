@@ -19,8 +19,8 @@ public class CommitService {
     private String baseUri;
 
     // Service to list Issues
-    public List<CommitValue> getCommits(String owner, String repo) {
-        String uri = baseUri + owner + "/" + repo + "/commits";
+    public List<CommitValue> getCommits(String owner, String repo, String nCommits) {
+        String uri = baseUri + owner + "/" + repo + "/commits?pagelen=" + nCommits;
         ResponseEntity<Commit> response = authorizationService.getWithToken(uri, Commit.class);
         return response.getBody().getValues();
     }
@@ -30,4 +30,6 @@ public class CommitService {
         ResponseEntity<CommitValue> response = authorizationService.getWithToken(uri, CommitValue.class);
         return response.getBody();
     }
+
+
 }

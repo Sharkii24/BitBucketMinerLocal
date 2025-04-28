@@ -20,8 +20,8 @@ public class IssueService {
     private String baseUri;
 
     // Service to list Issues
-    public List<IssueValue> getIssues(String owner, String repo) {
-        String uri = baseUri + owner + "/" + repo + "/issues";
+    public List<IssueValue> getIssues(String owner, String repo, String nIssues) {
+        String uri = baseUri + owner + "/" + repo + "/issues?pagelen=" + nIssues;
         ResponseEntity<Issue> response = authorizationService.getWithToken(uri, Issue.class);
         return response.getBody().getValues();
     }

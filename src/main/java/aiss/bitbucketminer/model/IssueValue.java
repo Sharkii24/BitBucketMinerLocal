@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class IssueValue {
 
     @JsonProperty("id")
-    private Integer id; // Hace falta (id Issue)
+    private String id; // Hace falta (id Issue)
     @JsonProperty("title")
     private String title;   // Hace falta (title Issue)
     @JsonProperty("reporter")
@@ -25,6 +25,8 @@ public class IssueValue {
     private String kind;  // Hace falta (label Issue)
     @JsonProperty("votes")
     private Integer votes;  //Hace falta (votes Issue)
+    @JsonProperty("content")
+    private IssueContent content;   // Hace falta (description Issue)
 
     /*
     @JsonProperty("type")
@@ -33,8 +35,6 @@ public class IssueValue {
     private Repository repository;
     @JsonProperty("links")
     private IssueLinks links;
-    @JsonProperty("content")
-    private IssueContent content;
     @JsonProperty("edited_on")
     private Object editedOn;
     @JsonProperty("milestone")
@@ -51,12 +51,12 @@ public class IssueValue {
      */
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -140,6 +140,16 @@ public class IssueValue {
         this.votes = votes;
     }
 
+    @JsonProperty("content")
+    public IssueContent getContent() {
+        return content;
+    }
+
+    @JsonProperty("content")
+    public void setContent(IssueContent content) {
+        this.content = content;
+    }
+
 
     /*
     @JsonProperty("type")
@@ -172,16 +182,6 @@ public class IssueValue {
     @JsonProperty("links")
     public void setLinks(IssueLinks links) {
         this.links = links;
-    }
-
-    @JsonProperty("content")
-    public IssueContent getContent() {
-        return content;
-    }
-
-    @JsonProperty("content")
-    public void setContent(IssueContent content) {
-        this.content = content;
     }
 
     @JsonProperty("edited_on")
@@ -285,6 +285,10 @@ public class IssueValue {
         sb.append('=');
         sb.append(((this.votes == null)?"<null>":this.votes));
         sb.append(',');
+        sb.append("content");
+        sb.append('=');
+        sb.append(((this.content == null)?"<null>":this.content));
+        sb.append(',');
 
         /*
         sb.append("type");
@@ -298,10 +302,6 @@ public class IssueValue {
         sb.append("links");
         sb.append('=');
         sb.append(((this.links == null)?"<null>":this.links));
-        sb.append(',');
-        sb.append("content");
-        sb.append('=');
-        sb.append(((this.content == null)?"<null>":this.content));
         sb.append(',');
         sb.append("editedOn");
         sb.append('=');
