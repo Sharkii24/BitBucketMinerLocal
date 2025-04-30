@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -23,6 +21,11 @@ public class CommentService {
     // Service to list Comments
     public List<CommentValue> getComments(String owner, String repo, String issueId) {
         String uri = baseUri + owner + "/" + repo + "/issues/" + issueId + "/comments";
+        ResponseEntity<Comment> response = authorizationService.getWithToken(uri,Comment.class);
+        return response.getBody().getValues();
+    }
+
+    public List<CommentValue> getCommentsByUri(String uri) {
         ResponseEntity<Comment> response = authorizationService.getWithToken(uri,Comment.class);
         return response.getBody().getValues();
     }

@@ -2,19 +2,17 @@
 package aiss.bitbucketminer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ProjectValue {
 
-    @JsonProperty("links")
-    private CommitLinks links;    // Hace falta (web_url Project)
-    @JsonProperty("name")
-    private String name;    // Hace falta (name Project)
     @JsonProperty("uuid")
     private String uuid;  // Hace falta (id Project)
+    @JsonProperty("name")
+    private String name;    // Hace falta (name Project)
+    @JsonProperty("links")
+    private SelfLinks links;    // Hace falta (web_url Project)
     @JsonProperty("slug")
     private String slug;    // Hace falta (Get a Project)
 
@@ -63,12 +61,12 @@ public class ProjectValue {
      */
 
     @JsonProperty("links")
-    public CommitLinks getLinks() {
+    public SelfLinks getLinks() {
         return links;
     }
 
     @JsonProperty("links")
-    public void setLinks(CommitLinks links) {
+    public void setLinks(SelfLinks links) {
         this.links = links;
     }
 

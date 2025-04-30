@@ -8,13 +8,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CommentValue {
 
     @JsonProperty("id")
-    private Integer id;      // Hace falta (id Comment)
+    private String id;      // Hace falta (id Comment)
+    @JsonProperty("content")
+    private RawContent content; // Hace falta (body Comment)
     @JsonProperty("created_on")
     private String createdOn;       // Hace falta (createdAt Comment)
     @JsonProperty("updated_on")
-    private Object updatedOn;       // Hace falta (updatedAt Comment)
-    @JsonProperty("content")
-    private CommentContent content; // Hace falta (body Comment)
+    private String updatedOn;       // Hace falta (updatedAt Comment)
     @JsonProperty("user")
     private User user;  // Hace falta (author Comment)
 
@@ -28,12 +28,12 @@ public class CommentValue {
      */
 
     @JsonProperty("id")
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
     @JsonProperty("id")
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -48,22 +48,22 @@ public class CommentValue {
     }
 
     @JsonProperty("updated_on")
-    public Object getUpdatedOn() {
+    public String getUpdatedOn() {
         return updatedOn;
     }
 
     @JsonProperty("updated_on")
-    public void setUpdatedOn(Object updatedOn) {
+    public void setUpdatedOn(String updatedOn) {
         this.updatedOn = updatedOn;
     }
 
     @JsonProperty("content")
-    public CommentContent getContent() {
+    public RawContent getContent() {
         return content;
     }
 
     @JsonProperty("content")
-    public void setContent(CommentContent content) {
+    public void setContent(RawContent content) {
         this.content = content;
     }
 

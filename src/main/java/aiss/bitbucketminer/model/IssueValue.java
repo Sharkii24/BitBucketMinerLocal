@@ -11,30 +11,30 @@ public class IssueValue {
     private String id; // Hace falta (id Issue)
     @JsonProperty("title")
     private String title;   // Hace falta (title Issue)
-    @JsonProperty("reporter")
-    private User reporter;   // Hace falta (author Issue)
-    @JsonProperty("assignee")
-    private User assignee;    // Hace falta
+    @JsonProperty("content")
+    private RawContent content;   // Hace falta (description Issue)
+    @JsonProperty("state")
+    private String state;   // Hace falta (state Issue)
     @JsonProperty("created_on")
     private String createdOn;   // Hace falta (createdAt Issue)
     @JsonProperty("updated_on")
     private String updatedOn;   // Hace falta (updatedAt Issue)
-    @JsonProperty("state")
-    private String state;   // Hace falta (state Issue)
     @JsonProperty("kind")
     private String kind;  // Hace falta (label Issue)
     @JsonProperty("votes")
     private Integer votes;  //Hace falta (votes Issue)
-    @JsonProperty("content")
-    private IssueContent content;   // Hace falta (description Issue)
+    @JsonProperty("links")
+    private IssueLinks links;   // Hace falta (link comments Issue)
+    @JsonProperty("reporter")
+    private User reporter;   // Hace falta (author Issue)
+    @JsonProperty("assignee")
+    private User assignee;    // Hace falta (assignee Issue)
 
     /*
     @JsonProperty("type")
     private String type;
     @JsonProperty("repository")
     private Repository repository;
-    @JsonProperty("links")
-    private IssueLinks links;
     @JsonProperty("edited_on")
     private Object editedOn;
     @JsonProperty("milestone")
@@ -141,37 +141,13 @@ public class IssueValue {
     }
 
     @JsonProperty("content")
-    public IssueContent getContent() {
+    public RawContent getContent() {
         return content;
     }
 
     @JsonProperty("content")
-    public void setContent(IssueContent content) {
+    public void setContent(RawContent content) {
         this.content = content;
-    }
-
-
-    /*
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-
-
-
-    @JsonProperty("repository")
-    public Repository getRepository() {
-        return repository;
-    }
-
-    @JsonProperty("repository")
-    public void setRepository(Repository repository) {
-        this.repository = repository;
     }
 
     @JsonProperty("links")
@@ -182,6 +158,27 @@ public class IssueValue {
     @JsonProperty("links")
     public void setLinks(IssueLinks links) {
         this.links = links;
+    }
+
+    /*
+    @JsonProperty("type")
+    public String getType() {
+        return type;
+    }
+e
+    @JsonProperty("type")
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @JsonProperty("repository")
+    public Repository getRepository() {
+        return repository;
+    }
+
+    @JsonProperty("repository")
+    public void setRepository(Repository repository) {
+        this.repository = repository;
     }
 
     @JsonProperty("edited_on")
@@ -243,6 +240,7 @@ public class IssueValue {
     public void setWatches(Integer watches) {
         this.watches = watches;
     }
+
      */
 
     @Override
@@ -289,6 +287,10 @@ public class IssueValue {
         sb.append('=');
         sb.append(((this.content == null)?"<null>":this.content));
         sb.append(',');
+        sb.append("links");
+        sb.append('=');
+        sb.append(((this.links == null)?"<null>":this.links));
+        sb.append(',');
 
         /*
         sb.append("type");
@@ -298,10 +300,6 @@ public class IssueValue {
         sb.append("repository");
         sb.append('=');
         sb.append(((this.repository == null)?"<null>":this.repository));
-        sb.append(',');
-        sb.append("links");
-        sb.append('=');
-        sb.append(((this.links == null)?"<null>":this.links));
         sb.append(',');
         sb.append("editedOn");
         sb.append('=');

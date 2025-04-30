@@ -7,16 +7,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
-    @JsonProperty("display_name")
-    private String displayName; // Hace falta (name User)
-    @JsonProperty("links")
-    private UserLinks links;    // Hace falta (web_url Assignee)
     @JsonProperty("uuid")
     private String uuid;    // Hace falta (id User)?
     @JsonProperty("account_id")
     private String accountId;   // Hace falta (id User)?
     @JsonProperty("nickname")
     private String nickname;    // Hace falta (username User)
+    @JsonProperty("display_name")
+    private String displayName; // Hace falta (name User)
+    @JsonProperty("links")
+    private UserLinks links;    // Hace falta (web_url Assignee)
 
     /*
     @JsonProperty("type")

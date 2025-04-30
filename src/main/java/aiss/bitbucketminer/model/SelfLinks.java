@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CommitLinks {
+public class SelfLinks {
 
     @JsonProperty("self")
     private Link self;   // Hace falta (web_url Commit)
@@ -101,7 +101,7 @@ public class CommitLinks {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(CommitLinks.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(SelfLinks.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("self");
         sb.append('=');
         sb.append(((this.self == null)?"<null>":this.self));

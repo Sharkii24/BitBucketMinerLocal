@@ -5,9 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -21,8 +19,9 @@ class IssueServiceTest {
     void getIssues() {
         String owner = "gentlero";
         String repo = "bitbucket-api";
+        String nIssues = "5";
         List<IssueValue> issues = null;
-        issues = issueService.getIssues(owner, repo);
+        issues = issueService.getIssues(owner, repo, nIssues);
         assertFalse(issues.isEmpty(), "The list of issues is empty!");
         System.out.println(issues);
     }

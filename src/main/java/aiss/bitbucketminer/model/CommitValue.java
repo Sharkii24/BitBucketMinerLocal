@@ -1,25 +1,22 @@
 
 package aiss.bitbucketminer.model;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CommitValue {
 
     @JsonProperty("hash")
     private String hash;    // Hace falta (id Commit)
-    @JsonProperty("date")
-    private String date;   // Hace falta (authored_date Commit) or (committedDate Commit)? (ponemos ambos)
-    @JsonProperty("author")
-    private Author author;   //Hace falta (commiter)
     @JsonProperty("message")
     private String message;     // Hace falta (message Commit)
+    @JsonProperty("author")
+    private Author author;   //Hace falta (commiter)
+    @JsonProperty("date")
+    private String date;   // Hace falta (authored_date Commit) or (committedDate Commit)? (ponemos ambos)
     @JsonProperty("links")
-    private CommitLinks links;   //Hace falta (web_url Commit)
+    private SelfLinks links;   //Hace falta (web_url Commit)
 
     /*
     @JsonProperty("type")
@@ -75,12 +72,12 @@ public class CommitValue {
     }
 
     @JsonProperty("links")
-    public CommitLinks getLinks() {
+    public SelfLinks getLinks() {
         return links;
     }
 
     @JsonProperty("links")
-    public void setLinks(CommitLinks links) {
+    public void setLinks(SelfLinks links) {
         this.links = links;
     }
 

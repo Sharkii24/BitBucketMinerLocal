@@ -7,9 +7,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class IssueLinks {
 
-    @JsonProperty("self")
-    private Link self;   // Hace falta (web_url Issue)
+    @JsonProperty("comments")
+    private Link comments;
+
     /*
+    @JsonProperty("self")
+    private Link self;
     @JsonProperty("html")
     private Html__1 html;
     @JsonProperty("comments")
@@ -22,6 +25,18 @@ public class IssueLinks {
     private Vote vote;
      */
 
+    @JsonProperty("comments")
+    public Link getComments() {
+        return comments;
+    }
+
+    @JsonProperty("comments")
+    public void setComments(Link comments) {
+        this.comments = comments;
+    }
+
+    /*
+
     @JsonProperty("self")
     public Link getSelf() {
         return self;
@@ -32,7 +47,6 @@ public class IssueLinks {
         this.self = self;
     }
 
-    /*
     @JsonProperty("html")
     public Html__1 getHtml() {
         return html;
@@ -88,18 +102,18 @@ public class IssueLinks {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(IssueLinks.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("comments");
+        sb.append('=');
+        sb.append(((this.comments == null)?"<null>":this.comments));
+        sb.append(',');
+        /*
         sb.append("self");
         sb.append('=');
         sb.append(((this.self == null)?"<null>":this.self));
         sb.append(',');
-        /*
         sb.append("html");
         sb.append('=');
         sb.append(((this.html == null)?"<null>":this.html));
-        sb.append(',');
-        sb.append("comments");
-        sb.append('=');
-        sb.append(((this.comments == null)?"<null>":this.comments));
         sb.append(',');
         sb.append("attachments");
         sb.append('=');

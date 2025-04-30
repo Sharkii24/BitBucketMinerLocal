@@ -2,23 +2,16 @@
 package aiss.bitbucketminer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Author {
 
     @JsonProperty("raw")
-    private String raw; // Hace falta (authorEmail Commit), hay que parsearlo
+    private String raw; // Hace falta (authorEmail Commit)
 
     @JsonProperty("user")
     private User user;  // Hace falta
-
-    /*
-    @JsonProperty("type")
-    private String type;
-     */
 
     @JsonProperty("raw")
     public String getRaw() {
@@ -40,18 +33,6 @@ public class Author {
         this.user = user;
     }
 
-    /*
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-     */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -64,12 +45,6 @@ public class Author {
         sb.append('=');
         sb.append(((this.user == null)?"<null>":this.user));
         sb.append(',');
-        /*
-        sb.append("type");
-        sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
-        sb.append(',');
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

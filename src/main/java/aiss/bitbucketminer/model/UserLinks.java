@@ -7,10 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserLinks {
 
-    @JsonProperty("self")
-    private Link self;   // Hace falta (web_url User)
     @JsonProperty("avatar")
     private Link avatar;   // Hace falta (avatarUrl User)
+    @JsonProperty("self")
+    private Link self;   // Hace falta (web_url User)
 
     /*
     @JsonProperty("html")

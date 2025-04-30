@@ -2,12 +2,10 @@
 package aiss.bitbucketminer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CommentContent {
+public class RawContent {
 
     @JsonProperty("raw")
     private String raw; // Hace falta (body Comment)
@@ -66,7 +64,7 @@ public class CommentContent {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(CommentContent.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(RawContent.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("raw");
         sb.append('=');
         sb.append(((this.raw == null)?"<null>":this.raw));

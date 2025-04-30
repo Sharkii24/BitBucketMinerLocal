@@ -27,6 +27,16 @@ class CommentServiceTest {
     }
 
     @Test
+    @DisplayName("List of Comment on an Issue Id with Uri")
+    void getCommentsByUri() {
+        String uri = "https://api.bitbucket.org/2.0/repositories/gentlero/bitbucket-api/issues/80/comments";
+        List<CommentValue> comments = null;
+        comments = commentService.getCommentsByUri(uri);
+        assertFalse(comments.isEmpty(), "The list of comments is empty!");
+        System.out.println(comments);
+    }
+
+    @Test
     @DisplayName("List of Comment by Id")
     void getCommentById() {
         String owner = "gentlero";
