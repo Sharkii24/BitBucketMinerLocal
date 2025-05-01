@@ -55,7 +55,11 @@ public class Transform {
     public void transformComments(List<CommentValue> comments, IssueDB issue) {
         for (CommentValue comment: comments) {
             UserDB author = transformUser(comment.getUser());
-            CommentDB commentDB = new CommentDB(comment.getId(), comment.getContent().getRaw(), comment.getCreatedOn(), comment.getUpdatedOn(), author);
+            String body = comment.getContent().getRaw();
+            if (body == null) {
+                body = "NO BODY";
+            }
+            CommentDB commentDB = new CommentDB(comment.getId(), body, comment.getCreatedOn(), comment.getUpdatedOn(), author);
             issue.getComments().add(commentDB);
         }
     }
