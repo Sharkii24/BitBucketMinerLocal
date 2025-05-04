@@ -10,11 +10,11 @@ public class Commit {
 
     @JsonProperty("values")
     private List<CommitValue> values; // Hace falta
+    @JsonProperty("next")
+    private String next;    // Hace falta (next page url Commit)
     /*
     @JsonProperty("pagelen")
     private Integer pagelen;
-    @JsonProperty("next")
-    private String next;
 
      */
 
@@ -28,6 +28,16 @@ public class Commit {
         this.values = values;
     }
 
+    @JsonProperty("next")
+    public String getNext() {
+        return next;
+    }
+
+    @JsonProperty("next")
+    public void setNext(String next) {
+        this.next = next;
+    }
+
     /*
     @JsonProperty("pagelen")
     public Integer getPagelen() {
@@ -37,16 +47,6 @@ public class Commit {
     @JsonProperty("pagelen")
     public void setPagelen(Integer pagelen) {
         this.pagelen = pagelen;
-    }
-
-    @JsonProperty("next")
-    public String getNext() {
-        return next;
-    }
-
-    @JsonProperty("next")
-    public void setNext(String next) {
-        this.next = next;
     }
 
      */
@@ -59,14 +59,14 @@ public class Commit {
         sb.append('=');
         sb.append(((this.values == null)?"<null>":this.values));
         sb.append(',');
+        sb.append("next");
+        sb.append('=');
+        sb.append(((this.next == null)?"<null>":this.next));
+        sb.append(',');
         /*
         sb.append("pagelen");
         sb.append('=');
         sb.append(((this.pagelen == null)?"<null>":this.pagelen));
-        sb.append(',');
-        sb.append("next");
-        sb.append('=');
-        sb.append(((this.next == null)?"<null>":this.next));
         sb.append(',');
 
          */

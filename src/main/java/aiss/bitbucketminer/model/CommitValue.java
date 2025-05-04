@@ -17,6 +17,8 @@ public class CommitValue {
     private String date;   // Hace falta (authored_date Commit) or (committedDate Commit)? (ponemos ambos)
     @JsonProperty("links")
     private SelfLinks links;   //Hace falta (web_url Commit)
+    @JsonProperty("summary")
+    private RawContent summary;    //Hace falta (title Commit)
 
     /*
     @JsonProperty("type")
@@ -27,8 +29,6 @@ public class CommitValue {
     private Rendered rendered;
     @JsonProperty("repository")
     private Repository repository;
-    @JsonProperty("summary")
-    private Summary summary;
      */
 
     @JsonProperty("hash")
@@ -81,6 +81,16 @@ public class CommitValue {
         this.links = links;
     }
 
+    @JsonProperty("summary")
+    public RawContent getSummary() {
+        return summary;
+    }
+
+    @JsonProperty("summary")
+    public void setSummary(RawContent summary) {
+        this.summary = summary;
+    }
+
     /*
     @JsonProperty("type")
     public String getType() {
@@ -90,16 +100,6 @@ public class CommitValue {
     @JsonProperty("type")
     public void setType(String type) {
         this.type = type;
-    }
-
-    @JsonProperty("summary")
-    public Summary getSummary() {
-        return summary;
-    }
-
-    @JsonProperty("summary")
-    public void setSummary(Summary summary) {
-        this.summary = summary;
     }
 
     @JsonProperty("parents")
@@ -158,14 +158,14 @@ public class CommitValue {
         sb.append('=');
         sb.append(((this.links == null)?"<null>":this.links));
         sb.append(',');
+        sb.append("summary");
+        sb.append('=');
+        sb.append(((this.summary == null)?"<null>":this.summary));
+        sb.append(',');
         /*
         sb.append("type");
         sb.append('=');
         sb.append(((this.type == null)?"<null>":this.type));
-        sb.append(',');
-        sb.append("summary");
-        sb.append('=');
-        sb.append(((this.summary == null)?"<null>":this.summary));
         sb.append(',');
         sb.append("parents");
         sb.append('=');

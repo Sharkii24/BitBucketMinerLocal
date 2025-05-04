@@ -10,6 +10,9 @@ public class Issue {
 
     @JsonProperty("values")
     private List<IssueValue> values;    // Hace falta
+    @JsonProperty("next")
+    private String next;    // Hace falta (next page url Issue)
+
     /*
     @JsonProperty("pagelen")
     private Integer pagelen;
@@ -17,8 +20,7 @@ public class Issue {
     private Integer size;
     @JsonProperty("page")
     private Integer page;
-    @JsonProperty("next")
-    private String next;
+
      */
 
     @JsonProperty("values")
@@ -29,6 +31,16 @@ public class Issue {
     @JsonProperty("values")
     public void setValues(List<IssueValue> values) {
         this.values = values;
+    }
+
+    @JsonProperty("next")
+    public String getNext() {
+        return next;
+    }
+
+    @JsonProperty("next")
+    public void setNext(String next) {
+        this.next = next;
     }
 
     /*
@@ -61,17 +73,6 @@ public class Issue {
     public void setPage(Integer page) {
         this.page = page;
     }
-
-    @JsonProperty("next")
-    public String getNext() {
-        return next;
-    }
-
-    @JsonProperty("next")
-    public void setNext(String next) {
-        this.next = next;
-    }
-
      */
 
     @Override
@@ -81,6 +82,10 @@ public class Issue {
         sb.append("values");
         sb.append('=');
         sb.append(((this.values == null)?"<null>":this.values));
+        sb.append(',');
+        sb.append("next");
+        sb.append('=');
+        sb.append(((this.next == null)?"<null>":this.next));
         sb.append(',');
         /*
         sb.append("pagelen");
@@ -95,11 +100,6 @@ public class Issue {
         sb.append('=');
         sb.append(((this.page == null)?"<null>":this.page));
         sb.append(',');
-        sb.append("next");
-        sb.append('=');
-        sb.append(((this.next == null)?"<null>":this.next));
-        sb.append(',');
-
          */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');

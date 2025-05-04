@@ -16,9 +16,9 @@ public class Transform {
         this.commentService = commentService;
     }
 
-    public ProjectDB transform(ProjectValue project, List<CommitValue> commits, List<IssueValue> issues){
+    public ProjectDB transform(ProjectValue project, List<CommitValue> commits, List<IssueValue> issues, String maxPages){
         ProjectDB projectDB = transformProject(project);
-        transformIssues(issues,projectDB);
+        transformIssues(issues,projectDB,maxPages);
         transformCommits(commits,projectDB);
         return projectDB;
     }
@@ -27,7 +27,7 @@ public class Transform {
         return new ProjectDB(project.getUuid(), project.getName(), project.getLinks().getSelf().getHref());
     }
 
-    public void transformIssues(List<IssueValue> issues, ProjectDB project){
+    public void transformIssues(List<IssueValue> issues, ProjectDB project, String maxPages){
         for (IssueValue issue: issues) {
             UserDB  reporter = transformUser(issue.getReporter());
             UserDB assignee = null;
@@ -36,9 +36,17 @@ public class Transform {
             }
             List<String> labels = new ArrayList<>();
             labels.add(issue.getKind());
-            IssueDB issueDB = new IssueDB(issue.getId(), issue.getTitle(), issue.getContent().getRaw(), issue.getState(), issue.getCreatedOn(), issue.getUpdatedOn(), null, labels, issue.getVotes(), reporter, assignee);
+            String closedAt = "NOT CLOSED YET";
+            if (issue.getState().equals("resolved") || issue.getState().equals("closed")) {
+                closedAt = issue.getUpdatedOn();
+            }
+            String updatedAt = issue.getUpdatedOn();
+            if (updatedAt == null) {
+                updatedAt = "NOT UPDATED YET";
+            }
+            IssueDB issueDB = new IssueDB(issue.getId(), issue.getTitle(), issue.getContent().getRaw(), issue.getState(), issue.getCreatedOn(), updatedAt, closedAt, labels, issue.getVotes(), reporter, assignee);
             project.getIssues().add(issueDB);
-            List<CommentValue> comments = commentService.getCommentsByUri(issue.getLinks().getComments().getHref());
+            List<CommentValue> comments = commentService.getCommentsByUriMaxPages(issue.getLinks().getComments().getHref(), maxPages);
             transformComments(comments, issueDB);
         }
     }
@@ -46,7 +54,11 @@ public class Transform {
     public void transformCommits(List<CommitValue> commits, ProjectDB project){
         for (CommitValue commit: commits){
             Author author = commit.getAuthor();
-            CommitDB commitDB = new CommitDB(commit.getHash(), null, commit.getMessage(), author.getUser().getNickname(),
+            String title = commit.getSummary().getRaw();
+            if (title.length() > 255) {
+                title = title.substring(0, 255);
+            }
+            CommitDB commitDB = new CommitDB(commit.getHash(), title, commit.getMessage(), author.getUser().getNickname(),
                     author.getRaw(), commit.getDate(), commit.getLinks().getSelf().getHref());
             project.getCommits().add(commitDB);
         }
@@ -59,12 +71,18 @@ public class Transform {
             if (body == null) {
                 body = "NO BODY";
             }
-            CommentDB commentDB = new CommentDB(comment.getId(), body, comment.getCreatedOn(), comment.getUpdatedOn(), author);
+            String updatedAt = comment.getUpdatedOn();
+            if (updatedAt == null) {
+                updatedAt = "NOT UPDATED YET";
+            }
+            CommentDB commentDB = new CommentDB(comment.getId(), body, comment.getCreatedOn(), updatedAt, author);
             issue.getComments().add(commentDB);
         }
     }
 
     public UserDB transformUser(User user){
-        return new UserDB(user.getUuid(), user.getNickname(), user.getDisplayName(), user.getLinks().getAvatar().getHref(), user.getLinks().getSelf().getHref());
+        Integer length = user.getUuid().length();
+        String id = user.getUuid().substring(1, length - 1);
+        return new UserDB(id, user.getNickname(), user.getDisplayName(), user.getLinks().getAvatar().getHref(), user.getLinks().getSelf().getHref());
     }
 }

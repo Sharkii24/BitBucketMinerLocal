@@ -85,7 +85,6 @@ public class Comment {
         sb.append('=');
         sb.append(((this.page == null)?"<null>":this.page));
         sb.append(',');
-
          */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');

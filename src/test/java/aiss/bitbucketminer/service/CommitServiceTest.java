@@ -5,9 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -21,7 +19,7 @@ class CommitServiceTest {
     void getCommits() {
         String owner = "gentlero";
         String repo = "bitbucket-api";
-        String nCommits = "5";
+        String nCommits = "15";
         List<CommitValue> commits = null;
         commits = commitService.getCommits(owner, repo, nCommits);
         assertFalse(commits.isEmpty(), "The list of commits is empty!");
@@ -38,5 +36,18 @@ class CommitServiceTest {
         commit = commitService.getCommitId(owner, repo, id);
         assertFalse(commit == null, "The commit is null!");
         System.out.println(commit);
+    }
+
+    @Test
+    @DisplayName("List of Commit with max pages")
+    void getCommitsMaxPages() {
+        String owner = "gentlero";
+        String repo = "bitbucket-api";
+        String nCommits = "3";
+        String maxPages = "5";
+        List<CommitValue> commits = null;
+        commits = commitService.getCommitsMaxPages(owner, repo, nCommits, maxPages);
+        assertFalse(commits.isEmpty(), "The list of commits is empty!");
+        System.out.println(commits);
     }
 }

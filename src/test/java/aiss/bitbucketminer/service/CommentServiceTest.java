@@ -48,4 +48,28 @@ class CommentServiceTest {
         assertFalse(comment == null, "The comment is null!");
         System.out.println(comment);
     }
+
+    @Test
+    @DisplayName("List of Comment on an Issue Id with max pages")
+    void getCommentsMaxPages() {
+        String owner = "gentlero";
+        String repo = "bitbucket-api";
+        String issueId = "80";
+        String maxPages = "5";
+        List<CommentValue> comments = null;
+        comments = commentService.getCommentsMaxPages(owner, repo, issueId, maxPages);
+        assertFalse(comments.isEmpty(), "The list of comments is empty!");
+        System.out.println(comments);
+    }
+
+    @Test
+    @DisplayName("List of Comment on an Issue with max pages by Uri")
+    void getCommentsByUriMaxPages() {
+        String uri = "https://api.bitbucket.org/2.0/repositories/gentlero/bitbucket-api/issues/80/comments";
+        String maxPages = "5";
+        List<CommentValue> comments = null;
+        comments = commentService.getCommentsByUriMaxPages(uri, maxPages);
+        assertFalse(comments.isEmpty(), "The list of comments is empty!");
+        System.out.println(comments);
+    }
 }

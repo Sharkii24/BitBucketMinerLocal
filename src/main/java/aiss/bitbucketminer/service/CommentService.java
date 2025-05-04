@@ -3,10 +3,14 @@ package aiss.bitbucketminer.service;
 import aiss.bitbucketminer.authorizationService.AuthorizationService;
 import aiss.bitbucketminer.model.Comment;
 import aiss.bitbucketminer.model.CommentValue;
+import aiss.bitbucketminer.utils.RESTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -17,6 +21,8 @@ public class CommentService {
 
     @Value("${bitbucketminer.baseUri}" + "repositories/")
     private String baseUri;
+    @Autowired
+    private RestTemplate restTemplate;
 
     // Service to list Comments
     public List<CommentValue> getComments(String owner, String repo, String issueId) {
@@ -25,9 +31,40 @@ public class CommentService {
         return response.getBody().getValues();
     }
 
+    public List<CommentValue> getCommentsMaxPages(String owner, String repo, String issueId, String maxPages) {
+        List<CommentValue> comments = new ArrayList<>();
+        String uri = baseUri + owner + "/" + repo + "/issues/" + issueId + "/comments";
+        ResponseEntity<Comment> response = authorizationService.getWithToken(uri,Comment.class);
+        comments.addAll(response.getBody().getValues());
+        if (Integer.parseInt(maxPages) > 1) {
+            for (Integer i = 1; i < Integer.parseInt(maxPages); i++) {
+                String uri2 = RESTUtil.getNextPageUrl(response.getHeaders());
+                if (uri2 == null) break;
+                response = authorizationService.getWithToken(uri2,Comment.class);
+                comments.addAll(response.getBody().getValues());
+            }
+        }
+        return comments;
+    }
+
     public List<CommentValue> getCommentsByUri(String uri) {
         ResponseEntity<Comment> response = authorizationService.getWithToken(uri,Comment.class);
         return response.getBody().getValues();
+    }
+
+    public List<CommentValue> getCommentsByUriMaxPages(String uri, String maxPages) {
+        List<CommentValue> comments = new ArrayList<>();
+        ResponseEntity<Comment> response = authorizationService.getWithToken(uri,Comment.class);
+        comments.addAll(response.getBody().getValues());
+        if (Integer.parseInt(maxPages) > 1) {
+            for (Integer i = 1; i < Integer.parseInt(maxPages); i++) {
+                String uri2 = RESTUtil.getNextPageUrl(response.getHeaders());
+                if (uri2 == null) break;
+                response = authorizationService.getWithToken(uri2,Comment.class);
+                comments.addAll(response.getBody().getValues());
+            }
+        }
+        return comments;
     }
 
     // Service to list a Comment
