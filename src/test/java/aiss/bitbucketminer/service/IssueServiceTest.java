@@ -1,6 +1,5 @@
 package aiss.bitbucketminer.service;
 
-import aiss.bitbucketminer.model.CommentValue;
 import aiss.bitbucketminer.model.IssueValue;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -45,7 +44,7 @@ class IssueServiceTest {
     void getIssuesMaxPages() {
         String owner = "gentlero";
         String repo = "bitbucket-api";
-        String nIssues = "2";
+        String nIssues = "1";
         String maxPages = "2";
         List<IssueValue> issues = null;
         issues = issueService.getIssuesMaxPages(owner, repo, nIssues, maxPages);

@@ -55,7 +55,7 @@ class CommentServiceTest {
         String owner = "gentlero";
         String repo = "bitbucket-api";
         String issueId = "80";
-        String maxPages = "5";
+        String maxPages = "2";
         List<CommentValue> comments = null;
         comments = commentService.getCommentsMaxPages(owner, repo, issueId, maxPages);
         assertFalse(comments.isEmpty(), "The list of comments is empty!");

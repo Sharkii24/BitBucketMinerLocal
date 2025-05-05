@@ -17,11 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
-/*
-@Tag(name= "BitBucket", description="BitBucket management API")
-
- */
-
 @RestController
 @RequestMapping("/bitbucket")
 public class Controller {
@@ -43,16 +38,7 @@ public class Controller {
 
     //http://localhost:8081/bitbucket/gentlero/bitbucket-api?nCommits=5&nIssues=5&maxPages=2
     //apipath/{workspace}/{repo_slug}[?nCommits=5&nIssues=5&maxPages=2]
-    /*
-    @Operation(summary="Retrieve a project by workspace and repo slug",
-            description="Get a project object by specifying its workspace and repo slug",
-            tags={"projects", "get"})
-     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Project retrieved",
-            content = { @Content(schema = @Schema(implementation = ProjectDB.class),
-            mediaType = "application/json") }),
-     @ApiResponse(responseCode = "404", description = "Project not found", content = { @Content(schema = @Schema()) })
-     */
+
     @GetMapping("/{workspace}/{repo_slug}")
     public ProjectDB getProject(@PathVariable String workspace, @PathVariable String repo_slug,
                                 @RequestParam(defaultValue = "5")String nCommits, @RequestParam(defaultValue = "5")String nIssues,
@@ -64,16 +50,6 @@ public class Controller {
         return projectDB;
     }
 
-    /*
-    @Operation(summary="Post a project to GitMiner by workspace and repo slug",
-            description="Get a project object by specifying its workspace and repo slug, and it's sent to GitMiner",
-            tags={"projects", "post"})
-     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Project posted",
-            content = { @Content(schema = @Schema(implementation = ProjectDB.class),
-            mediaType = "application/json") }),
-     @ApiResponse(responseCode = "404", description = "Project not found", content = { @Content(schema = @Schema()) })
-     */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{workspace}/{repo_slug}")
     public ProjectDB createProject(@PathVariable String workspace, @PathVariable String repo_slug,

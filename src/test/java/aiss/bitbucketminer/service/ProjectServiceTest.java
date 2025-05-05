@@ -24,6 +24,7 @@ class ProjectServiceTest {
     }
 
     @Test
+    @DisplayName("List of Projects with owner")
     void getWorkspaceProjects() {
         String owner = "gentlero";
         List<ProjectValue> projects = null;
@@ -33,6 +34,7 @@ class ProjectServiceTest {
     }
 
     @Test
+    @DisplayName("Get a Project by owner and repo name")
     void getProjectByName() {
         String owner = "gentlero";
         String repo = "bitbucket-api";

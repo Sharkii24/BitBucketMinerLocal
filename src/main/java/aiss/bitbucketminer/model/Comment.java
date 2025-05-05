@@ -10,6 +10,8 @@ public class Comment {
 
     @JsonProperty("values")
     private List<CommentValue> values; // Hace falta
+    @JsonProperty("next")
+    private String next;    // Hace falta (next page uri Comment)
 
     /*
     @JsonProperty("pagelen")
@@ -26,12 +28,20 @@ public class Comment {
         return values;
     }
 
-    /*
     @JsonProperty("values")
-    public void setValues(List<Value> values) {
+    public void setValues(List<CommentValue> values) {
         this.values = values;
     }
 
+    public String getNext() {
+        return next;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
+    }
+
+    /*
     @JsonProperty("pagelen")
     public Integer getPagelen() {
         return pagelen;
@@ -71,6 +81,10 @@ public class Comment {
         sb.append("values");
         sb.append('=');
         sb.append(((this.values == null)?"<null>":this.values));
+        sb.append(',');
+        sb.append("next");
+        sb.append('=');
+        sb.append(((this.next == null)?"<null>":this.next));
         sb.append(',');
         /*
         sb.append("pagelen");
