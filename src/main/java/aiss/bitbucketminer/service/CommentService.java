@@ -20,7 +20,6 @@ public class CommentService {
     @Value("${bitbucketminer.baseUri}" + "repositories/")
     private String baseUri;
 
-    // Service to list Comments
     public List<CommentValue> getComments(String owner, String repo, String issueId) {
         String uri = baseUri + owner + "/" + repo + "/issues/" + issueId + "/comments";
         ResponseEntity<Comment> response = restTemplate.exchange(uri, HttpMethod.GET, null, Comment.class);
@@ -65,7 +64,6 @@ public class CommentService {
         return comments;
     }
 
-    // Service to list a Comment
     public CommentValue getCommentById(String owner, String repo, String issueId, String id) {
         String uri = baseUri + owner + "/" + repo + "/issues/" + issueId + "/comments/" + id;
         ResponseEntity<CommentValue> response = restTemplate.exchange(uri, HttpMethod.GET, null, CommentValue.class);

@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Link {
 
     @JsonProperty("href")
-    private String href;    // Hace falta (web_url Assignee)
+    private String href;
 
     @JsonProperty("href")
     public String getHref() {

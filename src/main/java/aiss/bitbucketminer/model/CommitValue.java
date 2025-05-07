@@ -8,28 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CommitValue {
 
     @JsonProperty("hash")
-    private String hash;    // Hace falta (id Commit)
+    private String hash;
     @JsonProperty("message")
-    private String message;     // Hace falta (message Commit)
+    private String message;
     @JsonProperty("author")
-    private Author author;   //Hace falta (commiter)
+    private Author author;
     @JsonProperty("date")
-    private String date;   // Hace falta (authored_date Commit) or (committedDate Commit)? (ponemos ambos)
+    private String date;
     @JsonProperty("links")
-    private SelfLinks links;   //Hace falta (web_url Commit)
+    private HtmlLinks links;
     @JsonProperty("summary")
-    private RawContent summary;    //Hace falta (title Commit)
-
-    /*
-    @JsonProperty("type")
-    private String type;
-    @JsonProperty("parents")
-    private List<Parent> parents;
-    @JsonProperty("rendered")
-    private Rendered rendered;
-    @JsonProperty("repository")
-    private Repository repository;
-     */
+    private RawContent summary;
 
     @JsonProperty("hash")
     public String getHash() {
@@ -72,12 +61,12 @@ public class CommitValue {
     }
 
     @JsonProperty("links")
-    public SelfLinks getLinks() {
+    public HtmlLinks getLinks() {
         return links;
     }
 
     @JsonProperty("links")
-    public void setLinks(SelfLinks links) {
+    public void setLinks(HtmlLinks links) {
         this.links = links;
     }
 
@@ -90,49 +79,6 @@ public class CommitValue {
     public void setSummary(RawContent summary) {
         this.summary = summary;
     }
-
-    /*
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @JsonProperty("parents")
-    public List<Parent> getParents() {
-        return parents;
-    }
-
-    @JsonProperty("parents")
-    public void setParents(List<Parent> parents) {
-        this.parents = parents;
-    }
-
-    @JsonProperty("rendered")
-    public Rendered getRendered() {
-        return rendered;
-    }
-
-    @JsonProperty("rendered")
-    public void setRendered(Rendered rendered) {
-        this.rendered = rendered;
-    }
-
-    @JsonProperty("repository")
-    public Repository getRepository() {
-        return repository;
-    }
-
-    @JsonProperty("repository")
-    public void setRepository(Repository repository) {
-        this.repository = repository;
-    }
-
-     */
 
     @Override
     public String toString() {
@@ -162,24 +108,6 @@ public class CommitValue {
         sb.append('=');
         sb.append(((this.summary == null)?"<null>":this.summary));
         sb.append(',');
-        /*
-        sb.append("type");
-        sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
-        sb.append(',');
-        sb.append("parents");
-        sb.append('=');
-        sb.append(((this.parents == null)?"<null>":this.parents));
-        sb.append(',');
-        sb.append("rendered");
-        sb.append('=');
-        sb.append(((this.rendered == null)?"<null>":this.rendered));
-        sb.append(',');
-        sb.append("repository");
-        sb.append('=');
-        sb.append(((this.repository == null)?"<null>":this.repository));
-        sb.append(',');
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

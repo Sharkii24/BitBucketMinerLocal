@@ -8,21 +8,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class User {
 
     @JsonProperty("uuid")
-    private String uuid;    // Hace falta (id User)?
-    @JsonProperty("account_id")
-    private String accountId;   // Hace falta (id User)?
+    private String uuid;
     @JsonProperty("nickname")
-    private String nickname;    // Hace falta (username User)
+    private String nickname;
     @JsonProperty("display_name")
-    private String displayName; // Hace falta (name User)
+    private String displayName;
     @JsonProperty("links")
-    private UserLinks links;    // Hace falta (web_url Assignee)
-
-    /*
-    @JsonProperty("type")
-    private String type;
-
-    */
+    private UserLinks links;
 
     @JsonProperty("display_name")
     public String getDisplayName() {
@@ -54,16 +46,6 @@ public class User {
         this.uuid = uuid;
     }
 
-    @JsonProperty("account_id")
-    public String getAccountId() {
-        return accountId;
-    }
-
-    @JsonProperty("account_id")
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
     @JsonProperty("nickname")
     public String getNickname() {
         return nickname;
@@ -74,17 +56,6 @@ public class User {
         this.nickname = nickname;
     }
 
-    /*
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-    */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -101,21 +72,10 @@ public class User {
         sb.append('=');
         sb.append(((this.uuid == null)?"<null>":this.uuid));
         sb.append(',');
-        sb.append("accountId");
-        sb.append('=');
-        sb.append(((this.accountId == null)?"<null>":this.accountId));
-        sb.append(',');
         sb.append("nickname");
         sb.append('=');
         sb.append(((this.nickname == null)?"<null>":this.nickname));
         sb.append(',');
-        /*
-        sb.append("type");
-        sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
-        sb.append(',');
-
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpMethod;
-
 import java.util.List;
 
 @Service
@@ -26,19 +25,14 @@ public class ProjectService {
         return response.getBody().getValues();
     }
 
-    public List<ProjectValue> getWorkspaceProjects(String owner) {
-        String uri = baseUri + owner;
+    public List<ProjectValue> getWorkspaceProjects(String workspace) {
+        String uri = baseUri + workspace;
         ResponseEntity<Project> response = restTemplate.exchange(uri, HttpMethod.GET, null, Project.class);
         return response.getBody().getValues();
     }
 
-    public ProjectValue getProjectByName(String owner, String repo) {
-        String uri = baseUri + owner + "/" + repo;
-        ResponseEntity<ProjectValue> response = restTemplate.exchange(uri, HttpMethod.GET, null, ProjectValue.class);
-        return response.getBody();
-    }
-
-    public ProjectValue getProjectByUri(String uri) {
+    public ProjectValue getProjectByName(String workspace, String repoSlug) {
+        String uri = baseUri + workspace + "/" + repoSlug;
         ResponseEntity<ProjectValue> response = restTemplate.exchange(uri, HttpMethod.GET, null, ProjectValue.class);
         return response.getBody();
     }

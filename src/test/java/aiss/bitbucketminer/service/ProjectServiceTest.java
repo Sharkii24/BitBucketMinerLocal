@@ -43,4 +43,8 @@ class ProjectServiceTest {
         assertFalse(project == null, "The project is null!");
         System.out.println(project);
     }
+
+    @Test
+    void getProjectByUri() {
+    }
 }

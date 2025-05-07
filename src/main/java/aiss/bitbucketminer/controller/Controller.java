@@ -36,9 +36,6 @@ public class Controller {
         this.transform = transform;
     }
 
-    //http://localhost:8081/bitbucket/gentlero/bitbucket-api?nCommits=5&nIssues=5&maxPages=2
-    //apipath/{workspace}/{repo_slug}[?nCommits=5&nIssues=5&maxPages=2]
-
     @GetMapping("/{workspace}/{repo_slug}")
     public ProjectDB getProject(@PathVariable String workspace, @PathVariable String repo_slug,
                                 @RequestParam(defaultValue = "5")String nCommits, @RequestParam(defaultValue = "5")String nIssues,
@@ -54,7 +51,7 @@ public class Controller {
     @PostMapping("/{workspace}/{repo_slug}")
     public ProjectDB createProject(@PathVariable String workspace, @PathVariable String repo_slug,
                                 @RequestParam(defaultValue = "5")String nCommits, @RequestParam(defaultValue = "5")String nIssues,
-                                @RequestParam(defaultValue = "2")String maxPages){
+                                @RequestParam(defaultValue = "2")String maxPages) {
         ProjectValue project = projectService.getProjectByName(workspace, repo_slug);
         List<CommitValue> commits = commitService.getCommitsMaxPages(workspace, repo_slug, nCommits, maxPages);
         List<IssueValue> issues = issueService.getIssuesMaxPages(workspace, repo_slug, nIssues, maxPages);

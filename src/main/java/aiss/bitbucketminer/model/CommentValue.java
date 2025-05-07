@@ -8,24 +8,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CommentValue {
 
     @JsonProperty("id")
-    private String id;      // Hace falta (id Comment)
+    private String id;
     @JsonProperty("content")
-    private RawContent content; // Hace falta (body Comment)
+    private RawContent content;
     @JsonProperty("created_on")
-    private String createdOn;       // Hace falta (createdAt Comment)
+    private String createdOn;
     @JsonProperty("updated_on")
-    private String updatedOn;       // Hace falta (updatedAt Comment)
+    private String updatedOn;
     @JsonProperty("user")
-    private User user;  // Hace falta (author Comment)
-
-    /*
-    @JsonProperty("type")
-    private String type;
-    @JsonProperty("issue")
-    private Issue issue;
-    @JsonProperty("links")
-    private Links__3 links;
-     */
+    private User user;
 
     @JsonProperty("id")
     public String getId() {
@@ -77,40 +68,6 @@ public class CommentValue {
         this.user = user;
     }
 
-    /*
-
-    @JsonProperty("type")
-    public String getType() {
-        return type;
-    }
-
-    @JsonProperty("type")
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @JsonProperty("issue")
-    public Issue getIssue() {
-        return issue;
-    }
-
-    @JsonProperty("issue")
-    public void setIssue(Issue issue) {
-        this.issue = issue;
-    }
-
-    @JsonProperty("links")
-    public Links__3 getLinks() {
-        return links;
-    }
-
-    @JsonProperty("links")
-    public void setLinks(Links__3 links) {
-        this.links = links;
-    }
-
-     */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -135,22 +92,6 @@ public class CommentValue {
         sb.append('=');
         sb.append(((this.user == null)?"<null>":this.user));
         sb.append(',');
-
-        /*
-        sb.append("type");
-        sb.append('=');
-        sb.append(((this.type == null)?"<null>":this.type));
-        sb.append(',');
-        sb.append("issue");
-        sb.append('=');
-        sb.append(((this.issue == null)?"<null>":this.issue));
-        sb.append(',');
-        sb.append("links");
-        sb.append('=');
-        sb.append(((this.links == null)?"<null>":this.links));
-        sb.append(',');
-
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

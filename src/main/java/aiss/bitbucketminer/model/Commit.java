@@ -9,14 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Commit {
 
     @JsonProperty("values")
-    private List<CommitValue> values; // Hace falta
+    private List<CommitValue> values;
     @JsonProperty("next")
-    private String next;    // Hace falta (next page url Commit)
-    /*
-    @JsonProperty("pagelen")
-    private Integer pagelen;
-
-     */
+    private String next;
 
     @JsonProperty("values")
     public List<CommitValue> getValues() {
@@ -38,19 +33,6 @@ public class Commit {
         this.next = next;
     }
 
-    /*
-    @JsonProperty("pagelen")
-    public Integer getPagelen() {
-        return pagelen;
-    }
-
-    @JsonProperty("pagelen")
-    public void setPagelen(Integer pagelen) {
-        this.pagelen = pagelen;
-    }
-
-     */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -63,13 +45,6 @@ public class Commit {
         sb.append('=');
         sb.append(((this.next == null)?"<null>":this.next));
         sb.append(',');
-        /*
-        sb.append("pagelen");
-        sb.append('=');
-        sb.append(((this.pagelen == null)?"<null>":this.pagelen));
-        sb.append(',');
-
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

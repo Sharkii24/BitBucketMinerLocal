@@ -9,19 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Issue {
 
     @JsonProperty("values")
-    private List<IssueValue> values;    // Hace falta
+    private List<IssueValue> values;
     @JsonProperty("next")
-    private String next;    // Hace falta (next page url Issue)
-
-    /*
-    @JsonProperty("pagelen")
-    private Integer pagelen;
-    @JsonProperty("size")
-    private Integer size;
-    @JsonProperty("page")
-    private Integer page;
-
-     */
+    private String next;
 
     @JsonProperty("values")
     public List<IssueValue> getValues() {
@@ -43,38 +33,6 @@ public class Issue {
         this.next = next;
     }
 
-    /*
-    @JsonProperty("pagelen")
-    public Integer getPagelen() {
-        return pagelen;
-    }
-
-    @JsonProperty("pagelen")
-    public void setPagelen(Integer pagelen) {
-        this.pagelen = pagelen;
-    }
-
-    @JsonProperty("size")
-    public Integer getSize() {
-        return size;
-    }
-
-    @JsonProperty("size")
-    public void setSize(Integer size) {
-        this.size = size;
-    }
-
-    @JsonProperty("page")
-    public Integer getPage() {
-        return page;
-    }
-
-    @JsonProperty("page")
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-     */
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -87,20 +45,6 @@ public class Issue {
         sb.append('=');
         sb.append(((this.next == null)?"<null>":this.next));
         sb.append(',');
-        /*
-        sb.append("pagelen");
-        sb.append('=');
-        sb.append(((this.pagelen == null)?"<null>":this.pagelen));
-        sb.append(',');
-        sb.append("size");
-        sb.append('=');
-        sb.append(((this.size == null)?"<null>":this.size));
-        sb.append(',');
-        sb.append("page");
-        sb.append('=');
-        sb.append(((this.page == null)?"<null>":this.page));
-        sb.append(',');
-         */
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
         } else {

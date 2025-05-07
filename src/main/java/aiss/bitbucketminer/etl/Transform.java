@@ -11,7 +11,6 @@ public class Transform {
 
     private final CommentService commentService;
 
-
     public Transform(CommentService commentService) {
         this.commentService = commentService;
     }
@@ -24,7 +23,10 @@ public class Transform {
     }
 
     public ProjectDB transformProject(ProjectValue project){
-        return new ProjectDB(project.getUuid(), project.getName(), project.getLinks().getSelf().getHref());
+        String projectUuid= project.getUuid();
+        Integer length = projectUuid.length();
+        String uuid = projectUuid.substring(1, length - 1);
+        return new ProjectDB(uuid, project.getName(), project.getLinks().getHtml().getHref());
     }
 
     public void transformIssues(List<IssueValue> issues, ProjectDB project, String maxPages){
@@ -58,8 +60,15 @@ public class Transform {
             if (title.length() > 255) {
                 title = title.substring(0, 255);
             }
-            CommitDB commitDB = new CommitDB(commit.getHash(), title, commit.getMessage(), author.getUser().getNickname(),
-                    author.getRaw(), commit.getDate(), commit.getLinks().getSelf().getHref());
+
+            String[] authorNameEmail = author.getRaw().split(" <");
+            String name = authorNameEmail[0];
+            String email = authorNameEmail[1];
+            Integer length = email.length();
+            email = email.substring(0, length - 1);
+
+            CommitDB commitDB = new CommitDB(commit.getHash(), title, commit.getMessage(), name,
+                    email, commit.getDate(), commit.getLinks().getHtml().getHref());
             project.getCommits().add(commitDB);
         }
     }
@@ -83,6 +92,6 @@ public class Transform {
     public UserDB transformUser(User user){
         Integer length = user.getUuid().length();
         String id = user.getUuid().substring(1, length - 1);
-        return new UserDB(id, user.getNickname(), user.getDisplayName(), user.getLinks().getAvatar().getHref(), user.getLinks().getSelf().getHref());
+        return new UserDB(id, user.getNickname(), user.getDisplayName(), user.getLinks().getAvatar().getHref(), user.getLinks().getHtml().getHref());
     }
 }

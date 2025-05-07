@@ -5,28 +5,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RawContent {
+public class HtmlLinks {
 
-    @JsonProperty("raw")
-    private String raw;
+    @JsonProperty("html")
+    private Link html;
 
-    @JsonProperty("raw")
-    public String getRaw() {
-        return raw;
+    @JsonProperty("html")
+    public Link getHtml() {
+        return html;
     }
 
-    @JsonProperty("raw")
-    public void setRaw(String raw) {
-        this.raw = raw;
+    @JsonProperty("html")
+    public void setHtml(Link html) {
+        this.html = html;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(RawContent.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("raw");
+        sb.append(HtmlLinks.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("html");
         sb.append('=');
-        sb.append(((this.raw == null)?"<null>":this.raw));
+        sb.append(((this.html == null)?"<null>":this.html));
         sb.append(',');
         if (sb.charAt((sb.length()- 1)) == ',') {
             sb.setCharAt((sb.length()- 1), ']');
