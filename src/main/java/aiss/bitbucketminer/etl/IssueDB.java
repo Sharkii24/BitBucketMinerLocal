@@ -9,9 +9,9 @@ public class IssueDB {
     private String title;
     private String description;
     private String state;
-    private String createdAt;
-    private String updatedAt;
-    private String closedAt;
+    private String created_at;
+    private String updated_at;
+    private String closed_at;
     private List<String> labels;
     private Integer votes;
     private UserDB author;
@@ -23,9 +23,9 @@ public class IssueDB {
         this.title = title;
         this.description = description;
         this.state = state;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.closedAt = closedAt;
+        this.created_at = createdAt;
+        this.updated_at = updatedAt;
+        this.closed_at = closedAt;
         this.labels = labels;
         this.votes = votes;
         this.author = author;
@@ -65,28 +65,28 @@ public class IssueDB {
         this.state = state;
     }
 
-    public String getCreatedAt() {
-        return createdAt;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public String getUpdated_at() {
+        return updated_at;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
     }
 
-    public String getClosedAt() {
-        return closedAt;
+    public String getClosed_at() {
+        return closed_at;
     }
 
-    public void setClosedAt(String closedAt) {
-        this.closedAt = closedAt;
+    public void setClosed_at(String closed_at) {
+        this.closed_at = closed_at;
     }
 
     public List<String> getLabels() {

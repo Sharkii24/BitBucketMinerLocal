@@ -22,14 +22,14 @@ public class Transform {
         return projectDB;
     }
 
-    public ProjectDB transformProject(ProjectValue project){
+    public ProjectDB transformProject(ProjectValue project) {
         String projectUuid= project.getUuid();
         Integer length = projectUuid.length();
         String uuid = projectUuid.substring(1, length - 1);
         return new ProjectDB(uuid, project.getName(), project.getLinks().getHtml().getHref());
     }
 
-    public void transformIssues(List<IssueValue> issues, ProjectDB project, String maxPages){
+    public void transformIssues(List<IssueValue> issues, ProjectDB project, String maxPages) {
         for (IssueValue issue: issues) {
             UserDB  reporter = transformUser(issue.getReporter());
             UserDB assignee = null;
